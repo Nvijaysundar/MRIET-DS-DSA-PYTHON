@@ -36,3 +36,42 @@ Updated Product List:
 Name: acer, ID: A1, Price: 45, Quantity: 456
 Name: hp, ID: A2, Price: 32, Quantity: 345
 
+
+
+class Product:
+  def __init__(self,name,pid,price,qty):
+    self.name = name
+    self.pid = pid
+    self.price = price
+    self.qty = qty
+    
+  def disp(self):
+    print(self.name,self.pid,self.price,self.qty)
+  
+def updateDetails(products):
+  choice = int(input("Enter 1 : price \t 2. Qty :: "))
+  pid = input("Enter Id to be changed: ")#a1
+  for temp in products:
+    if pid == temp.pid:
+      if choice ==1:
+        temp.price = float(input("Enter new Price: "))
+      elif choice == 2:
+        temp.qty = int(input("Enter new qty: "))
+    
+
+def readProducts():
+  products = []
+  no_of_products = int(input("Enter No of Products:: "))
+  for _ in range(0,no_of_products):
+    products.append(Product(input("Enter Name: "),input("Enter Id: "),
+                  float(input("Enter Price: ")),int(input("Enter Qty: "))))
+  
+  for temp in products:
+    temp.disp()
+
+  updateDetails(products)
+  
+  for temp in products:
+    temp.disp()
+  
+readProducts()
